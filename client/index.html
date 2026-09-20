@@ -99,6 +99,50 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
 @media(max-width:850px){.hero-kicker{justify-content:center}}
 @media(max-width:520px){.hero-kicker{justify-content:flex-start;gap:5px;margin-top:13px}.hero-kicker span{font-size:9px;padding:6px 8px}.hero-card-state{font-size:9px}}
 </style>
+
+<style data-card-upgrade="v1">
+.hero-card{padding:22px 22px 19px;overflow:hidden}
+.hero-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.28),transparent 42%);pointer-events:none}
+.hero-card:after{content:"";position:absolute;width:150px;height:150px;left:-75px;bottom:-100px;border-radius:50%;background:rgba(243,106,54,.08);pointer-events:none}
+.hero-card .mini-top,.hero-card h3,.hero-card p,.hero-card .meter,.hero-card .meter-row,.hero-card .hero-card-state{position:relative;z-index:1}
+.hero-card .mini-top{margin-bottom:22px}
+.hero-card h3{font-size:26px;letter-spacing:-.6px;margin:5px 0 4px}
+.hero-card p{line-height:1.7;margin-bottom:17px}
+.card-network-label{display:flex;align-items:center;justify-content:space-between;margin:0 0 9px;color:var(--muted);font-size:10px;font-weight:800}
+.card-network-label b{color:var(--ink);font-size:11px}
+.card-signal{display:flex;align-items:flex-end;gap:3px;height:19px}
+.card-signal i{display:block;width:5px;border-radius:5px 5px 2px 2px;background:var(--orange);opacity:.36;transition:height .35s,opacity .35s,transform .35s}
+.card-signal i:nth-child(1){height:6px}.card-signal i:nth-child(2){height:10px}.card-signal i:nth-child(3){height:14px}.card-signal i:nth-child(4){height:19px}
+.card-signal i:nth-child(-n+3){opacity:.86}
+.card-signal i:last-child{opacity:1}
+.hero-card.is-checking .card-signal i{animation:cardSignalPulse 1s ease-in-out infinite alternate}
+.hero-card.is-checking .card-signal i:nth-child(2){animation-delay:.12s}.hero-card.is-checking .card-signal i:nth-child(3){animation-delay:.24s}.hero-card.is-checking .card-signal i:nth-child(4){animation-delay:.36s}
+.hero-card.is-connected .card-signal i{transform:scaleY(1.1);opacity:1}
+@keyframes cardSignalPulse{from{opacity:.4}to{opacity:1}}
+.card-meter-head{display:flex;align-items:center;justify-content:space-between;margin-top:15px;margin-bottom:7px;color:var(--muted);font-size:10px;font-weight:800}
+.card-meter-head b{color:var(--orange);font-size:11px}
+.card-meter{height:9px;background:#f1e9e0;border-radius:99px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(24,32,45,.06)}
+.card-meter span{display:block;width:72%;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--orange),var(--gold));transition:width .7s cubic-bezier(.23,1,.32,1)}
+.card-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:13px;position:relative;z-index:1}
+.card-meta-item{padding:8px 7px;border:1px solid rgba(24,32,45,.08);border-radius:12px;background:rgba(255,255,255,.42);text-align:center}
+.card-meta-item span{display:block;color:var(--muted);font-size:9px}.card-meta-item b{display:block;margin-top:3px;color:var(--ink);font-size:11px;direction:ltr}
+.card-live-line{display:flex;align-items:center;gap:6px;margin-top:12px;color:var(--muted);font-size:9px;position:relative;z-index:1}
+.card-live-line i{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(35,143,117,.1)}
+.hero-card.is-checking .card-live-line i{background:var(--blue)}
+.hero-card.is-connected .card-live-line i{animation:cardLivePulse 1.6s infinite}
+@keyframes cardLivePulse{50%{box-shadow:0 0 0 7px rgba(35,143,117,0)}}
+@media(max-width:520px){.hero-card{padding:18px 18px 16px}.hero-card h3{font-size:22px}.card-meta{gap:5px}.card-meta-item{padding:7px 4px}.card-meta-item span{font-size:8px}.card-meta-item b{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.hero-card.is-checking .card-signal i,.hero-card.is-connected .card-live-line i{animation:none}}
+</style>
+
+
+
+<style data-card-layers="v1">
+.hero-card{isolation:isolate}
+.hero-card>*,.hero-card:before,.hero-card:after{visibility:visible}
+.hero-card>*,.hero-card .mini-top,.hero-card h3,.hero-card p,.hero-card .card-network-label,.hero-card .card-signal,.hero-card .card-meter-head,.hero-card .card-meter,.hero-card .card-meta,.hero-card .hero-card-state,.hero-card .card-live-line{opacity:1}
+@media(max-width:520px){.hero-card>*,.hero-card .mini-top,.hero-card h3,.hero-card p,.hero-card .card-network-label,.hero-card .card-signal,.hero-card .card-meter-head,.hero-card .card-meter,.hero-card .card-meta,.hero-card .hero-card-state,.hero-card .card-live-line{position:relative;z-index:3}}
+</style>
 </head>
 <body>
 <div class="ambient"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
@@ -110,7 +154,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
   <span><i aria-hidden="true"></i>اتصال مستقر</span>
   <span><i aria-hidden="true"></i>دعم متاح</span>
 </div>
-</div><div class="hero-visual"><div class="halo"></div><div class="hero-card" id="heroConnectionCard"><div class="mini-top"><div class="welcome">ALOSTOURA HOTSPOT<br><b id="heroStatusTitle" style="color:var(--ink);font-size:12px">متصل بالقرب منك</b></div><div class="wifi-symbol"><i></i><i></i><i></i><b></b></div></div><h3>جاهز للاتصال؟</h3><p id="heroStatusText">اختر باقتك وابدأ رحلتك الرقمية الآن.</p><div class="meter"><span></span></div><div class="meter-row"><span>قوة الإشارة</span><b id="heroSignalValue" style="color:var(--orange)">ممتازة 72%</b></div><span class="hero-card-state" id="heroCardState" aria-live="polite"><i aria-hidden="true"></i>الشبكة متاحة الآن</span></div><div class="float-chip"><b>⚡ 120 Mbps</b>سرعة فائقة</div><div class="float-chip two"><b>24/7</b>متصل دائماً</div></div></section>
+</div><div class="hero-visual"><div class="halo"></div><div class="hero-card" id="heroConnectionCard"><div class="mini-top"><div class="welcome">ALOSTOURA HOTSPOT<br><b id="heroStatusTitle" style="color:var(--ink);font-size:12px">متصل بالقرب منك</b></div><div class="wifi-symbol"><i></i><i></i><i></i><b></b></div></div><h3>جاهز للاتصال؟</h3><p id="heroStatusText">اختر باقتك وابدأ رحلتك الرقمية الآن.</p><div class="card-network-label"><span>جودة الاتصال</span><b>ALOSTOURA-5G</b></div>
+<div class="card-signal" aria-label="قوة الإشارة ممتازة"><i></i><i></i><i></i><i></i></div>
+<div class="card-meter-head"><span>قوة الإشارة</span><b id="heroSignalValue">ممتازة 72%</b></div>
+<div class="card-meter"><span></span></div>
+<div class="card-meta" aria-label="ملخص الاتصال"><div class="card-meta-item"><span>السرعة</span><b>120 Mbps</b></div><div class="card-meta-item"><span>الاستجابة</span><b>12 ms</b></div><div class="card-meta-item"><span>التغطية</span><b>98%</b></div></div>
+<span class="hero-card-state" id="heroCardState" aria-live="polite"><i aria-hidden="true"></i>الشبكة متاحة الآن</span>
+<div class="card-live-line"><i aria-hidden="true"></i><span id="heroLiveText">آخر فحص منذ لحظات · الاتصال مستقر</span></div></div><div class="float-chip"><b>⚡ 120 Mbps</b>سرعة فائقة</div><div class="float-chip two"><b>24/7</b>متصل دائماً</div></div></section>
 <div class="section-title" id="login"><div><h2>بوابة الدخول</h2><p>وصول آمن وسريع إلى شبكة الأسطورة</p></div></div>
 <section class="content-grid"><div class="panel auth-panel"><div class="tabs"><button class="tab active" data-tab="voucher">كود الدخول</button><button class="tab" data-tab="account">حسابي</button></div><form id="loginForm"><div id="voucherFields"><label class="form-label" for="voucher">أدخل كود الباقة</label><div class="input-wrap"><span class="input-icon">✦</span><input id="voucher" name="voucher" dir="ltr" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="12" placeholder="مثال: 123456" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" required /></div></div><div id="accountFields" style="display:none"><label class="form-label" for="username">اسم المستخدم</label><div class="input-wrap"><span class="input-icon">◉</span><input id="username" name="username" type="text" placeholder="اكتب اسم المستخدم" autocomplete="username" required /></div><label class="form-label" for="password">كلمة المرور</label><div class="input-wrap"><span class="input-icon">▣</span><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required /><button type="button" class="eye" id="togglePassword" aria-label="إظهار كلمة المرور">◉</button></div></div><div class="form-row"><label class="check"><input type="checkbox" checked /> تذكرني على هذا الجهاز</label><a class="link" href="#" id="helpLink">هل تحتاج مساعدة؟</a></div><button class="primary" id="loginBtn" type="submit"><span class="btn-label">اتصل بالإنترنت الآن&nbsp; ↗</span></button><p class="form-note"><b>●</b> اتصالك محمي ومشفر</p></form><div class="connected-banner" id="connectedBanner"><div class="connection"><div class="connection-ring"><span>✓</span></div><div><strong>أنت متصل الآن</strong><p>جلسة آمنة · سرعة ممتازة</p></div></div><button class="disconnect" id="disconnectBtn">تسجيل الخروج</button></div></div>
 <div class="panel package-panel"><div class="section-title" style="margin-top:0"><div><h2>باقاتك المفضلة</h2><p>اختر ما يناسب إيقاع يومك</p></div><span style="color:var(--orange);font-size:20px">⌁</span></div><div class="offer"><div class="offer-content"><span class="offer-tag">العرض الأكثر طلباً</span><h3>باقة الأسطورة اليومية</h3><p>إنترنت سريع بلا حدود لمدة 24 ساعة</p><div class="offer-price"><strong>15</strong><span>ريال / يوم</span></div></div></div><div class="package"><div class="pkg-info"><span class="pkg-icon">◌</span><div><strong>الأسبوعية</strong><small>7 أيام · استخدام مريح</small></div></div><button class="choose" data-package="الأسبوعية">اختيار</button></div><div class="package"><div class="pkg-info"><span class="pkg-icon">∞</span><div><strong>الشهرية</strong><small>30 يوماً · قيمة أكبر</small></div></div><button class="choose" data-package="الشهرية">اختيار</button></div></div></section>
@@ -202,9 +252,9 @@ $('#helpLink').addEventListener('click',e=>{e.preventDefault();$('#modalIcon').t
   if (!card || !title || !text || !state || !signal || !voucher || !form) return;
   const setHeroState = (mode) => {
     card.classList.remove('is-checking', 'is-connected');
-    if (mode === 'checking') { card.classList.add('is-checking'); title.textContent = 'جارٍ التحقق...'; text.textContent = 'نتأكد من الكود ونجهز اتصالك الآن.'; state.lastChild.textContent = 'جارٍ التحقق'; signal.textContent = 'جاري الفحص'; }
-    else if (mode === 'connected') { card.classList.add('is-connected'); title.textContent = 'أنت متصل الآن'; text.textContent = 'تم تفعيل باقتك، استمتع بتجربة الأسطورة.'; state.lastChild.textContent = 'اتصال نشط'; signal.textContent = 'ممتازة 100%'; }
-    else { title.textContent = 'متصل بالقرب منك'; text.textContent = 'اختر باقتك وابدأ رحلتك الرقمية الآن.'; state.lastChild.textContent = 'الشبكة متاحة الآن'; signal.textContent = 'ممتازة 72%'; }
+    if (mode === 'checking') { card.classList.add('is-checking'); title.textContent = 'جارٍ التحقق...'; text.textContent = 'نتأكد من الكود ونجهز اتصالك الآن.'; state.lastChild.textContent = 'جارٍ التحقق'; signal.textContent = 'جاري الفحص'; document.querySelector('#heroLiveText').textContent = 'يتم فحص جودة الاتصال الآن'; }
+    else if (mode === 'connected') { card.classList.add('is-connected'); title.textContent = 'أنت متصل الآن'; text.textContent = 'تم تفعيل باقتك، استمتع بتجربة الأسطورة.'; state.lastChild.textContent = 'اتصال نشط'; signal.textContent = 'ممتازة 100%'; document.querySelector('#heroLiveText').textContent = 'اتصال نشط · الباقة مفعلة الآن'; }
+    else { title.textContent = 'متصل بالقرب منك'; text.textContent = 'اختر باقتك وابدأ رحلتك الرقمية الآن.'; state.lastChild.textContent = 'الشبكة متاحة الآن'; signal.textContent = 'ممتازة 72%'; document.querySelector('#heroLiveText').textContent = 'آخر فحص منذ لحظات · الاتصال مستقر'; }
   };
   voucher.addEventListener('focus', () => setHeroState('checking'));
   voucher.addEventListener('input', () => setHeroState(voucher.value.trim() ? 'checking' : 'ready'));
