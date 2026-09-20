@@ -56,13 +56,36 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
 .session-active .connected-session{margin-top:34px}
 @media(prefers-reduced-motion:reduce){.session-ring-card *,.session-overlay *,.connected-session *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 </style>
+
+<style data-layout-reflow="v1">
+/* Layout-only pass: preserve the existing palette and focus the page on connection. */
+.hero{min-height:392px;padding:28px 0 18px;gap:28px}
+.hero-copy{padding-inline-start:18px}
+.hero-visual{min-height:354px}
+.section-title{margin:8px 0 13px;scroll-margin-top:20px}
+.content-grid{gap:16px;align-items:start}
+.auth-panel{padding:23px;position:relative}
+.package-panel{padding:22px}
+.stats{margin-top:15px}
+.footer{margin-top:28px}
+@media(max-width:850px){.hero{min-height:0;padding:24px 0 15px;gap:18px}.hero-copy{padding-inline-start:0}.content-grid{gap:14px}.section-title{margin-top:7px}}
+@media(max-width:520px){.hero{padding:18px 0 12px;gap:12px}.section-title{margin:4px 0 11px}.panel{padding:17px}.auth-panel{padding:18px}.package-panel{padding:18px}.stats{margin-top:12px}.footer{margin-top:23px}}
+</style>
+
+<style data-layout-cta="v1">
+.hero-connect-cta{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding:11px 15px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.56);color:var(--ink);font-size:12px;font-weight:900;box-shadow:0 8px 20px rgba(49,38,27,.045);transition:transform .22s,box-shadow .22s}
+.hero-connect-cta:hover{transform:translateY(-2px);box-shadow:0 13px 26px rgba(49,38,27,.09)}
+.hero-connect-cta span{font-size:17px;color:var(--orange)}
+@media(max-width:850px){.hero-connect-cta{margin-top:15px}}
+@media(max-width:520px){.hero-connect-cta{width:100%;justify-content:center;margin-top:14px;padding:12px 14px}}
+</style>
 </head>
 <body>
 <div class="ambient"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
 <main class="page">
 <header class="topbar"><a class="brand" href="#top"><span class="brandmark">A</span><span class="brandtext"><strong>ALOSTOURA</strong><small>الأسطورة · INTERNET</small></span></a><div class="top-actions"><span class="pill"><i class="live-dot"></i>الشبكة متاحة</span><span class="pill">عربي <span style="opacity:.45">/</span> EN</span></div></header>
-<section class="hero" id="top"><div class="hero-copy"><div class="eyebrow">تجربة اتصال مختلفة</div><h1>أهلاً بك في<br><em>الأسطورة</em></h1><p class="lead">اتصل بعالمك بسرعة وأناقة. استمتع بتجربة إنترنت مصممة لتمنحك المزيد، في كل لحظة.</p></div><div class="hero-visual"><div class="halo"></div><div class="hero-card"><div class="mini-top"><div class="welcome">ALOSTOURA HOTSPOT<br><b style="color:var(--ink);font-size:12px">متصل بالقرب منك</b></div><div class="wifi-symbol"><i></i><i></i><i></i><b></b></div></div><h3>جاهز للاتصال؟</h3><p>اختر باقتك وابدأ رحلتك الرقمية الآن.</p><div class="meter"><span></span></div><div class="meter-row"><span>قوة الإشارة</span><b style="color:var(--orange)">ممتازة 72%</b></div></div><div class="float-chip"><b>⚡ 120 Mbps</b>سرعة فائقة</div><div class="float-chip two"><b>24/7</b>متصل دائماً</div></div></section>
-<div class="section-title"><div><h2>بوابة الدخول</h2><p>وصول آمن وسريع إلى شبكة الأسطورة</p></div></div>
+<section class="hero" id="top"><div class="hero-copy"><div class="eyebrow">تجربة اتصال مختلفة</div><h1>أهلاً بك في<br><em>الأسطورة</em></h1><p class="lead">اتصل بعالمك بسرعة وأناقة. استمتع بتجربة إنترنت مصممة لتمنحك المزيد، في كل لحظة.</p><a class="hero-connect-cta" id="heroConnectCta" href="#login">أدخل كودك وابدأ الاتصال <span aria-hidden="true">↘</span></a></div><div class="hero-visual"><div class="halo"></div><div class="hero-card"><div class="mini-top"><div class="welcome">ALOSTOURA HOTSPOT<br><b style="color:var(--ink);font-size:12px">متصل بالقرب منك</b></div><div class="wifi-symbol"><i></i><i></i><i></i><b></b></div></div><h3>جاهز للاتصال؟</h3><p>اختر باقتك وابدأ رحلتك الرقمية الآن.</p><div class="meter"><span></span></div><div class="meter-row"><span>قوة الإشارة</span><b style="color:var(--orange)">ممتازة 72%</b></div></div><div class="float-chip"><b>⚡ 120 Mbps</b>سرعة فائقة</div><div class="float-chip two"><b>24/7</b>متصل دائماً</div></div></section>
+<div class="section-title" id="login"><div><h2>بوابة الدخول</h2><p>وصول آمن وسريع إلى شبكة الأسطورة</p></div></div>
 <section class="content-grid"><div class="panel auth-panel"><div class="tabs"><button class="tab active" data-tab="voucher">كود الدخول</button><button class="tab" data-tab="account">حسابي</button></div><form id="loginForm"><div id="voucherFields"><label class="form-label" for="voucher">أدخل كود الباقة</label><div class="input-wrap"><span class="input-icon">✦</span><input id="voucher" name="voucher" dir="ltr" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="12" placeholder="مثال: 123456" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" required /></div></div><div id="accountFields" style="display:none"><label class="form-label" for="username">اسم المستخدم</label><div class="input-wrap"><span class="input-icon">◉</span><input id="username" name="username" type="text" placeholder="اكتب اسم المستخدم" autocomplete="username" required /></div><label class="form-label" for="password">كلمة المرور</label><div class="input-wrap"><span class="input-icon">▣</span><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required /><button type="button" class="eye" id="togglePassword" aria-label="إظهار كلمة المرور">◉</button></div></div><div class="form-row"><label class="check"><input type="checkbox" checked /> تذكرني على هذا الجهاز</label><a class="link" href="#" id="helpLink">هل تحتاج مساعدة؟</a></div><button class="primary" id="loginBtn" type="submit"><span class="btn-label">اتصل بالإنترنت الآن&nbsp; ↗</span></button><p class="form-note"><b>●</b> اتصالك محمي ومشفر</p></form><div class="connected-banner" id="connectedBanner"><div class="connection"><div class="connection-ring"><span>✓</span></div><div><strong>أنت متصل الآن</strong><p>جلسة آمنة · سرعة ممتازة</p></div></div><button class="disconnect" id="disconnectBtn">تسجيل الخروج</button></div></div>
 <div class="panel package-panel"><div class="section-title" style="margin-top:0"><div><h2>باقاتك المفضلة</h2><p>اختر ما يناسب إيقاع يومك</p></div><span style="color:var(--orange);font-size:20px">⌁</span></div><div class="offer"><div class="offer-content"><span class="offer-tag">العرض الأكثر طلباً</span><h3>باقة الأسطورة اليومية</h3><p>إنترنت سريع بلا حدود لمدة 24 ساعة</p><div class="offer-price"><strong>15</strong><span>ريال / يوم</span></div></div></div><div class="package"><div class="pkg-info"><span class="pkg-icon">◌</span><div><strong>الأسبوعية</strong><small>7 أيام · استخدام مريح</small></div></div><button class="choose" data-package="الأسبوعية">اختيار</button></div><div class="package"><div class="pkg-info"><span class="pkg-icon">∞</span><div><strong>الشهرية</strong><small>30 يوماً · قيمة أكبر</small></div></div><button class="choose" data-package="الشهرية">اختيار</button></div></div></section>
 <section class="stats"><div class="stat"><div class="stat-top"><span>سرعة الشبكة</span><span class="stat-icon">↯</span></div><strong>120</strong><small>Mbps · ممتازة</small></div><div class="stat"><div class="stat-top"><span>زمن الاستجابة</span><span class="stat-icon" style="color:var(--blue)">◷</span></div><strong>12</strong><small>ms · سريع جداً</small></div><div class="stat"><div class="stat-top"><span>التغطية</span><span class="stat-icon" style="color:var(--mint)">⌾</span></div><strong>98%</strong><small>إشارة قوية</small></div></section>
